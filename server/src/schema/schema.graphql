@@ -1,0 +1,39 @@
+type Liquid {
+    id:ID!
+    name: String!
+}
+
+type Toping {
+    id:ID!
+    name: String!
+}
+
+type User {
+    id:ID!
+    email: String!
+    password: String!
+    token:String!
+}
+
+type Drink {
+    id:ID!
+    name:String!
+    topingId: String!
+    liquidId: String!
+    options: String!
+}
+
+type Query {
+     getLiquids: [Liquid],
+     getTopings: [Toping],
+     getUsers: [User],
+     getDrinks:[Drink]
+}
+
+ type Mutation {
+    register(email:String!, password:String!):User,
+    login(email:String!, password:String!):User,
+    addDrink(name:String!, liquidId:String!, topingId:String!, options:String!):Drink,
+    updateDrink(id:ID!, name:String!, topingId:String!, liquidId:String!, options:String!):Drink,
+    deleteDrink(id:ID!):Drink
+}
